@@ -1,3 +1,3 @@
-export * from './parse-object-base';
-export * from './parse-query-base';
-export * from './cloud-function-base';
+export * from './parse_object_base';
+export * from './parse_query_base';
+export * from './cloud_function_base';

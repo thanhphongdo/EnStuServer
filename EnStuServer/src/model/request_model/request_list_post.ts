@@ -1,4 +1,4 @@
-import { RequestListBase } from './request-list-base';
+import { RequestListBase } from './request_list_base';
 
 export class RequestListPost extends RequestListBase {
     

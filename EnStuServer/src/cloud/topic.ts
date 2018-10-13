@@ -1,5 +1,5 @@
 import { CloudFunctionBase } from '../parse/index';
-import { RequestListPost, ResponseListBase, Topic } from '../model/index';
+import { RequestTopic, ResponseListBase, Topic } from '../model/index';
 import { ParseQueryBase } from '../parse';
 // import {Parse} from 'parse/pro';
 // import { Promise } from 'parse/node';
@@ -11,13 +11,13 @@ export class TopicCloud extends CloudFunctionBase {
         this.defineCloud(this.addTopic);
     }
 
-    addTopic(params: RequestListPost, request: Parse.Cloud.FunctionRequest): Parse.Promise<Topic> {
+    addTopic(params: RequestTopic, request: Parse.Cloud.FunctionRequest): Parse.Promise<Topic> {
         var topic = new Topic();
-        topic.name = "Test";
-        return Parse.Promise.when(topic.save(null, { useMasterKey: true }).then((topic: Topic) => {
+        topic.name = params.name;
+        return Parse.Promise.when(topic.save(null, { }).then((topic: any) => {
             return topic;
         }).catch(err => {
-            return err;
+            throw err;
         }));
     }
 

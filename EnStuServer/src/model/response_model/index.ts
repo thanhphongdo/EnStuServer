@@ -1,1 +1,1 @@
-export * from './response-list-base';
+export * from './response_list_base';

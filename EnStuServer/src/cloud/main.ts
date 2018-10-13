@@ -6,24 +6,26 @@ import { TopicCloud } from './topic';
 const postCloud = new PostCloud();
 const topicCloud = new TopicCloud();
 
-// Parse.Cloud.define('hello', function (req, res) {
-//     var user = new User();
-//     user.firstName = 'Phong';
-//     user.lastName = 'Do';
-//     user.setUsername('phongdo444');
-//     user.email = 'phong444@gmail.com';
-//     user.setPassword('11111111');
-//     user.save(null).then(user => {
-//         var post = new Post();
-//         post.user = user;
-//         post.message = 'message';
-//         post.save(null).then(post => {
-//             res.success(post);
-//         }).catch(err => {
-//             res.error(err);
+Parse.Cloud.define('hello', function (req, res) {
+    res.success({ test: true });
+});
+
+// Parse.Cloud.define("test", function (request, response) {
+//     const query = new Parse.Query("Topic");
+//     query.find()
+//         .then((results) => {
+//             return results;
 //         })
-//     }).catch(err => {
-//         console.log(err);
-//         res.error(err);
-//     })
+//         .catch(() => {
+//             return "movie lookup failed";
+//         });
 // });
+
+
+Parse.Cloud.define("test", (request) => {
+    const query = new Parse.Query('Topic');
+    return query.first({useMasterKey:true})
+    .then((results) => {
+        return results;
+    });
+});

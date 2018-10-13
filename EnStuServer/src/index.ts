@@ -59,6 +59,7 @@ app.get('/', function (req, res) {
 var httpServer = require('http').createServer(app);
 httpServer.listen(appConfig.parseServer.port, function () {
     console.log('parse-server running on port ' + appConfig.parseServer.port + '.');
+    console.log('MongoDB uri ' + appConfig.parseServer.databaseURI + '.');
 });
 
 // This will enable the Live Query real-time server
