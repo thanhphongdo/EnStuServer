@@ -28,10 +28,10 @@ var dashboard = new ParseDashboard({
         masterKey: appConfig.parseServer.masterKey,
         appName: appConfig.parseServer.appName
     }],
-    users: [{
-        user: 'root',
-        pass: 'r00t'
-    }]
+    // users: [{
+    //     user: 'root',
+    //     pass: 'r00t'
+    // }]
 }, { allowInsecureHTTP: true });
 
 var app: Application = express();

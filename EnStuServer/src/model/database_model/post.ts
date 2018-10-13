@@ -1,29 +1,6 @@
+import { ParseObjectBase } from '../../parse';
 import { User } from './user';
-import { Pointer } from 'parse';
 
-export class ParseObjectBase extends Parse.Object {
-
-    public static nameOfClass: string;
-
-    public static newObject<T>(parseObj: Parse.Object, parseClass: any): T {
-        let obj: any = new parseClass();
-        obj._finishFetch(parseObj.toJSON());
-        return obj;
-    }
-
-    public static newArrayObject<T>(parseObjs: Array<Parse.Object>, parseClass: any): Array<T> {
-        let objArr: Array<T> = [];
-        for (let i in parseObjs) {
-            objArr.push(ParseObjectBase.newObject(parseObjs[i], parseClass));
-        }
-        return objArr;
-    }
-
-    constructor(className?: string) {
-        super(className);
-        
-    }
-}
 
 export class Post extends ParseObjectBase {
     public static nameOfClass: string = 'Post';

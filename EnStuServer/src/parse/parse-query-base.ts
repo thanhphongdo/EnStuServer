@@ -1,4 +1,4 @@
-export class  ParseQuery extends Parse.Query {
+export class  ParseQueryBase extends Parse.Query {
     objClass: any;
     constructor(className: string, objClass: any) {
         super(className);

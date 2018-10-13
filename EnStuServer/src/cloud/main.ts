@@ -1,8 +1,10 @@
 import { User, Post } from "../model/index";
 
 import { PostCloud } from './post';
+import { TopicCloud } from './topic';
 
 const postCloud = new PostCloud();
+const topicCloud = new TopicCloud();
 
 // Parse.Cloud.define('hello', function (req, res) {
 //     var user = new User();

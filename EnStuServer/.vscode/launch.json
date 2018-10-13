@@ -8,6 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
+            "preLaunchTask": "buildts",
             "program": "${workspaceFolder}/build/index.js",
             "env": {
                 "ENV": "debug"
