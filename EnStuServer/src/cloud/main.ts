@@ -24,7 +24,7 @@ Parse.Cloud.define('hello', function (req, res) {
 
 Parse.Cloud.define("test", (request) => {
     const query = new Parse.Query('Topic');
-    return query.first({useMasterKey:true})
+    return query.find({useMasterKey:true})
     .then((results) => {
         return results;
     });

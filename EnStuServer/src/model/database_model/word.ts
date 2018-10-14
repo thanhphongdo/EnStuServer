@@ -3,9 +3,8 @@ import { User } from './user';
 
 
 export class Word extends ParseObjectBase {
-    public static nameOfClass: string = 'Word';
     constructor() {
-        super(Word.nameOfClass);
+        super(Word.name);
     }
 
     get text(): string {

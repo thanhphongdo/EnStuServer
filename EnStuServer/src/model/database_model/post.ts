@@ -3,9 +3,8 @@ import { User } from './user';
 
 
 export class Post extends ParseObjectBase {
-    public static nameOfClass: string = 'Post';
     constructor() {
-        super(Post.nameOfClass);
+        super(Post.name);
     }
 
     get message(): string {

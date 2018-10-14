@@ -1,29 +1,32 @@
-export class  ParseQueryBase extends Parse.Query {
+import { Promise } from 'parse/node';
+export class ParseQueryBase extends Parse.Query {
     objClass: any;
-    constructor(className: string, objClass: any) {
-        super(className);
+    constructor(objClass: any) {
+        super(objClass.name);
         this.objClass = objClass
     }
 
-    find<T>(options?: Parse.Query.FindOptions):Parse.Promise<Array<T>>{
+    find<T>(options?: Parse.Query.FindOptions): Parse.Promise<Array<T>> {
         var self = this;
-        return Parse.Promise.when(super.find(options).then(function(data){
+        return Promise.when(super.find(options).then(data => {
             var dataConvert = self.objClass.newArrayObject(data, self.objClass);
             return dataConvert;
+        }).catch(err => {
+            throw err;
         }));
     }
 
-    first<T>(options?: Parse.Query.FindOptions):Parse.Promise<T>{
+    first<T>(options?: Parse.Query.FindOptions): Parse.Promise<T> {
         var self = this;
-        return Parse.Promise.when(super.first(options).then(function(data){
+        return Promise.when(super.first(options).then(function (data) {
             var dataConvert = self.objClass.newObject(data, self.objClass);
             return dataConvert;
         }));
     }
 
-    get<T>(objectId: string, options?: Parse.Query.FindOptions):Parse.Promise<T>{
+    get<T>(objectId: string, options?: Parse.Query.FindOptions): Parse.Promise<T> {
         var self = this;
-        return Parse.Promise.when(super.get(objectId, options).then(function(data){
+        return Promise.when(super.get(objectId, options).then(function (data) {
             var dataConvert = self.objClass.newObject(data, self.objClass);
             return dataConvert;
         }));

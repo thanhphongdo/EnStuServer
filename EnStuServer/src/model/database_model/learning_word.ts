@@ -2,9 +2,8 @@ import { ParseObjectBase } from '../../parse';
 import { User } from './user';
 
 export class LearningWord extends ParseObjectBase {
-    public static nameOfClass: string = 'LearningWord';
     constructor() {
-        super(LearningWord.nameOfClass);
+        super(LearningWord.name);
     }
 
     get user(): any {

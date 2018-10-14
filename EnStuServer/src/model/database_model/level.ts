@@ -1,9 +1,8 @@
 import { ParseObjectBase } from '../../parse';
 
 export class Level extends ParseObjectBase {
-    public static nameOfClass: string = 'Level';
     constructor() {
-        super(Level.nameOfClass);
+        super(Level.name);
     }
 
     get name(): string {

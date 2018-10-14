@@ -1,33 +1,36 @@
 import { CloudFunctionBase } from '../parse/index';
-import { RequestTopic, ResponseListBase, Topic } from '../model/index';
+import { RequestTopic, RequestListTopic, ResponseListBase, Topic } from '../model/index';
 import { ParseQueryBase } from '../parse';
-// import {Parse} from 'parse/pro';
-// import { Promise } from 'parse/node';
-import * as Parse from 'parse/node';
+import { Promise } from 'parse/node';
 
 export class TopicCloud extends CloudFunctionBase {
     constructor() {
         super();
         this.defineCloud(this.addTopic);
+        this.defineCloud(this.listTopic);
     }
 
     addTopic(params: RequestTopic, request: Parse.Cloud.FunctionRequest): Parse.Promise<Topic> {
         var topic = new Topic();
         topic.name = params.name;
-        return Parse.Promise.when(topic.save(null, { }).then((topic: any) => {
+        return Promise.when(topic.save(null, { useMasterKey: true }).then((topic: any) => {
             return topic;
         }).catch(err => {
             throw err;
         }));
     }
 
-    // getListPost(params: RequestListPost, request: Parse.Cloud.FunctionRequest): Parse.Promise<ResponseListBase<Post>> {
-    //     let postQuery = new ParseQuery(Post.nameOfClass, Post);
-    //     return Parse.Promise.when(postQuery.get<Post>('EFzFL59CcF', { useMasterKey: true }).then((post) => {
-    //         let response: ResponseListBase<Post> = new ResponseListBase<Post>(1, 10, [post]);
-    //         return response;
-    //     }).catch(err => {
-    //         return err;
-    //     }));
-    // }
+    listTopic(params: RequestListTopic, request: Parse.Cloud.FunctionRequest): Parse.Promise<ResponseListBase<Topic>> {
+        let postQuery = new ParseQueryBase(Topic);
+        params.perPage = params.perPage || 10;
+        params.page = params.page || 1;
+        postQuery.limit(params.perPage);
+        postQuery.skip(params.perPage * (params.page - 1));
+        return Promise.when(postQuery.find<Topic>({ useMasterKey: true }).then((topics) => {
+            let response: ResponseListBase<Topic> = new ResponseListBase<Topic>(1, 10, topics);
+            return response;
+        }).catch(err => {
+            throw err;
+        }));
+    }
 }
