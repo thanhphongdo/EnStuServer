@@ -1,8 +1,8 @@
 import { ParseObjectBase } from '../../parse';
 
 export class Topic extends ParseObjectBase {
-    constructor() {
-        super(Topic.name);
+    constructor(data?: {[key: string]: any}) {
+        super(Topic.name, data);
     }
 
     get name(): string {

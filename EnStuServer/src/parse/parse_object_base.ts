@@ -15,8 +15,8 @@ export class ParseObjectBase extends Parse.Object {
         return objArr;
     }
 
-    constructor(className?: string) {
-        super(className);
+    constructor(className?: string, data?: {[key: string]: any}) {
+        super(className, data);
         
     }
 }

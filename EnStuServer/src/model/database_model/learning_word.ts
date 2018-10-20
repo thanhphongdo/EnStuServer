@@ -2,8 +2,8 @@ import { ParseObjectBase } from '../../parse';
 import { User } from './user';
 
 export class LearningWord extends ParseObjectBase {
-    constructor() {
-        super(LearningWord.name);
+    constructor(data?: {[key: string]: any}) {
+        super(LearningWord.name, data);
     }
 
     get user(): any {

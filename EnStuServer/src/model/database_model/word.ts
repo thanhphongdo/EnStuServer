@@ -3,8 +3,8 @@ import { User } from './user';
 
 
 export class Word extends ParseObjectBase {
-    constructor() {
-        super(Word.name);
+    constructor(data?: {[key: string]: any}) {
+        super(Word.name, data);
     }
 
     get text(): string {

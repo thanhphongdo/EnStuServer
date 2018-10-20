@@ -2,9 +2,11 @@ import { User, Post } from "../model/index";
 
 import { PostCloud } from './post';
 import { TopicCloud } from './topic';
+import { WordCloud } from './word';
 
 const postCloud = new PostCloud();
 const topicCloud = new TopicCloud();
+const wordCloud = new WordCloud();
 
 Parse.Cloud.define('hello', function (req, res) {
     res.success({ test: true });
