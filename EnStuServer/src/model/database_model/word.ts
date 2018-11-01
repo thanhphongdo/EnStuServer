@@ -38,4 +38,13 @@ export class Word extends ParseObjectBase {
     set isSentence(value: boolean) {
         this.set('isSentence', value);
     }
+
+    get voiceEn(): any {
+        return this.get('voiceEn');
+    }
+
+    set voiceEn(value: any) {
+        this.set('voiceEn', value);
+    }
+    
 }

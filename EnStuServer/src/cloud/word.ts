@@ -2,6 +2,8 @@ import { CloudFunctionBase } from '../parse/index';
 import { RequestWord, RequestListTopic, ResponseListBase, Word, Topic, Level } from '../model/index';
 import { ParseQueryBase } from '../parse';
 import { Promise } from 'parse/node';
+import { File } from 'parse/node';
+import { getVoice } from '../text_to_speech/index';
 
 export class WordCloud extends CloudFunctionBase {
     constructor() {
@@ -20,10 +22,29 @@ export class WordCloud extends CloudFunctionBase {
         word.topic = topic;
         word.level = level;
         return Promise.when(word.save(null, { useMasterKey: true }).then((word) => {
-            return word;
+            return getVoice(params.text).then((audio: any) => {
+                // var voiceEn = new File('voiceEn', { base64: audio }, 'audio/wav');
+                var voiceEn = new Parse.File('voiceEn', Array.from(audio), 'audio/wav');
+                return voiceEn.save().then(file=>{
+                    word.voiceEn = file;
+                    return word.save(null, { useMasterKey: true }).then(word => {
+                        return word;
+                    }).catch(err => {
+                        throw err;
+                    });
+                }).catch(err=>{
+                    throw err;
+                });
+            }).catch(err => {
+                throw err;
+            });
         }).catch(err => {
             throw err;
         }));
+        // return getVoice(params.text).then(audio=>{
+
+        // })
+
     }
 
     // listTopic(params: RequestListTopic, request: Parse.Cloud.FunctionRequest): Parse.Promise<ResponseListBase<Topic>> {

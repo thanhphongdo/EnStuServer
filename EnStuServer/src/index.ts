@@ -52,44 +52,45 @@ app.get('/', function (req, res) {
     res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
 
-var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
+// var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 
-var textToSpeech = new TextToSpeechV1({
-    iam_apikey: 'NM15jgz4tGDsgZ3BNaHg0LLNLaklRmGEmDaT5dTvjB9I',
-    url: 'https://gateway-syd.watsonplatform.net/speech-to-text/api'
-});
+// var textToSpeech = new TextToSpeechV1({
+//     iam_apikey: 'NM15jgz4tGDsgZ3BNaHg0LLNLaklRmGEmDaT5dTvjB9I',
+//     url: 'https://gateway-syd.watsonplatform.net/speech-to-text/api'
+// });
 
-app.get('/testVoice', function (req, res) {
-    var textToSpeech = new TextToSpeechV1({
-        username: '06834294-a9ce-4726-ab7d-8c47dadf65bf',
-        password: 'xcoIzZfsAHGX',
-        url: 'https://stream.watsonplatform.net/text-to-speech/api'
-    });
+// app.get('/testVoice', function (req, res) {
+//     var textToSpeech = new TextToSpeechV1({
+//         username: '06834294-a9ce-4726-ab7d-8c47dadf65bf',
+//         password: 'xcoIzZfsAHGX',
+//         url: 'https://stream.watsonplatform.net/text-to-speech/api'
+//     });
 
-    var synthesizeParams = {
-        text: 'Hello world',
-        accept: 'audio/wav',
-        voice: 'en-US_AllisonVoice'
-    };
+//     var synthesizeParams = {
+//         text: 'Hello world',
+//         accept: 'audio/wav',
+//         voice: 'en-US_AllisonVoice'
+//     };
 
-    // Pipe the synthesized text to a file.
-    textToSpeech.synthesize(synthesizeParams, function (err: any, audio: any) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        textToSpeech.repairWavHeader(audio);
-        fs.writeFileSync('audio.wav', audio);
-        console.log('audio.wav written with a corrected wav header');
-    });
+//     // Pipe the synthesized text to a file.
+//     textToSpeech.synthesize(synthesizeParams, function (err: any, audio: any) {
+//         if (err) {
+//             console.log(err);
+//             return;
+//         }
+//         textToSpeech.repairWavHeader(audio);
+//         fs.writeFileSync('audio.wav', audio);
+//         console.log('audio.wav written with a corrected wav header');
+//     });
 
-    res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
-});
+//     res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
+// });
+
 import {RequestWord} from './model/request_model/request_word';
 app.get('/test', function (req, res) {
     // var RequestWord = require('./model/request_model/request_word').RequestWord;
     var params = new RequestWord();
-    params.text = 'xxx';
+    params.text = 'Hello';
     params.topicId = 'Uah8sQr1EM',
     params.levelId = 'wtKPHxHO4w';
     Parse.Cloud.run("addWord", params.toJSON()).then(data=>{

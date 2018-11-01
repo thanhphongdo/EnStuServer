@@ -3,10 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "vue-cli-service serve --mode development",
+    "build-dev": "vue-cli-service build --mode development",
+    "build-prod": "vue-cli-service build --mode production"
   },
   "dependencies": {
+    "@types/parse": "^1.11.3",
+    "express": "^4.16.4",
+    "json2typescript": "^1.0.6",
+    "materialize-css": "^1.0.0-rc.2",
+    "parse": "^2.1.0",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
