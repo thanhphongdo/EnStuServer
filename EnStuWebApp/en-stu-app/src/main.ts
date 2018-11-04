@@ -23,7 +23,7 @@ import { Topic } from './models/index';
 Parse.cloud('listTopic', {}).then(res => {
   var data = Parse.deserializeArray<Topic>(Topic, Parse.toJSON(res.data))[0];
   if (data.source) {
-    console.log(data.source.name);
+    console.log(data);
   }
 }).catch(err => {
   console.log(err);

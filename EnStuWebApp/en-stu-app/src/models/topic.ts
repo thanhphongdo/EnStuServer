@@ -7,16 +7,11 @@ export class Source extends ParseObeject{
 
 @JsonObject('Topic')
 export class Topic extends ParseObeject {
-
-    // @JsonProperty('objectId', String)
-    // id?: string = undefined;
-
+    
     @JsonProperty('name', String)
     name?: String = undefined;
 
 
     @JsonProperty('source', PointerConverter)
     source?: Source = undefined;
-    // @JsonProperty('updatedAt', DateConverter)
-    // updatedAt?: Date = undefined;
 }
