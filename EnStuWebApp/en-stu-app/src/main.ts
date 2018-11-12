@@ -18,16 +18,6 @@ import * as Parse from './services/parse';
 Vue.config.productionTip = false;
 
 Vue.prototype.Parse = Parse.init();
-console.log(Vue.prototype.Parse);
-import { Topic } from './models/index';
-Parse.cloud('listTopic', {}).then(res => {
-  var data = Parse.deserializeArray<Topic>(Topic, Parse.toJSON(res.data))[0];
-  if (data.source) {
-    console.log(data);
-  }
-}).catch(err => {
-  console.log(err);
-});
 
 new Vue({
   router,

@@ -1,6 +1,7 @@
 <template>
     <div class="height-100">
-        <Login></Login>
+        <AuthenticationFlow v-if="step == 'AUTHEN'" step="LOGIN" v-on:authenAction="onAuthenAction"></AuthenticationFlow>
+        <SelectLevel v-if="step == 'SELECT_LEVEL'"></SelectLevel>
     </div>
 </template>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

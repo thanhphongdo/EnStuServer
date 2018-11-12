@@ -1,24 +1,24 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import template from './login.vue';
+import template from './register.vue';
 import { AuthenStep } from '../../enums';
 
 @Component({
-    name: 'Login',
+    name: 'Register',
     mixins: [template]
 })
-export default class Login extends Vue {
+export default class Register extends Vue {
     @Prop() private msg!: string;
 
     login() {
-        this.$emit('loginAction', {
-            success: true,
+        this.$emit('registerAction', {
+            success: false,
             step: AuthenStep.LOGIN
         })
     }
 
     register() {
-        this.$emit('loginAction', {
-            success: false,
+        this.$emit('registerAction', {
+            success: true,
             step: AuthenStep.REGISTER
         })
     }
