@@ -61,6 +61,16 @@ html, body, #app{
     background-color: transparent !important;
 }
 
+.input-field{
+    text-align: left;
+}
+
+.helper-text.input-error-message{
+    display: none;
+    color: #ee6e73;
+    text-align: left;
+}
+
 @media(min-width:992px){
     .main-body{
         margin-top: -64px;

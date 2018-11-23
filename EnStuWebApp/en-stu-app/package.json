@@ -8,13 +8,16 @@
     "build-prod": "vue-cli-service build --mode production"
   },
   "dependencies": {
+    "@types/jquery": "^3.3.22",
     "@types/materialize-css": "^1.0.5",
     "@types/parse": "^1.11.3",
     "express": "^4.16.4",
+    "jquery": "^2.2.4",
     "json2typescript": "^1.0.6",
     "materialize-css": "^1.0.0-rc.2",
     "parse": "^2.1.0",
     "register-service-worker": "^1.0.0",
+    "swiper": "^4.4.2",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
     "vue-i18n": "^8.3.0",

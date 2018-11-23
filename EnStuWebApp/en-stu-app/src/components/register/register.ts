@@ -1,6 +1,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import template from './register.vue';
 import { AuthenStep } from '../../enums';
+import { register } from '../../services/parse';
 
 @Component({
     name: 'Register',
@@ -8,6 +9,15 @@ import { AuthenStep } from '../../enums';
 })
 export default class Register extends Vue {
     @Prop() private msg!: string;
+    email!: string;
+    password!: string;
+
+    data() {
+        return {
+            email: '',
+            password: ''
+        }
+    }
 
     login() {
         this.$emit('registerAction', {
@@ -17,9 +27,18 @@ export default class Register extends Vue {
     }
 
     register() {
-        this.$emit('registerAction', {
-            success: true,
-            step: AuthenStep.REGISTER
-        })
+        var self = this;
+        register(this.email, this.password).then(data => {
+            self.$emit('registerAction', {
+                success: true,
+                step: AuthenStep.REGISTER
+            })
+        }).catch(err => {
+            console.log(err);
+        });
+        // this.$emit('registerAction', {
+        //     success: true,
+        //     step: AuthenStep.REGISTER
+        // })
     }
 }

@@ -1,7 +1,7 @@
 import * as Parse from './parse';
 import { Level } from '../models/index';
 
-export function getLevelBySource(sourceId: string) {
+function getLevelBySource(sourceId: string) {
     return Parse.cloud('listLevel', {}).then(res => {
         console.log(res);
         var data = Parse.deserializeArray<Level>(Level, Parse.toJSON(res.data));
@@ -11,3 +11,6 @@ export function getLevelBySource(sourceId: string) {
     });
 }
 
+export const LevelService = {
+    getLevelBySource
+}

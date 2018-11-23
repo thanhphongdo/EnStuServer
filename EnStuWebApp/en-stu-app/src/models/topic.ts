@@ -11,4 +11,6 @@ export class Topic extends ParseObeject {
 
     @JsonProperty('source', PointerConverter)
     source?: Source = undefined;
+
+    checked?: boolean = false;
 }

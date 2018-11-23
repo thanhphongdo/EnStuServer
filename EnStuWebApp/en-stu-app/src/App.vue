@@ -15,7 +15,7 @@
     </nav>
     <div class="container main-body">
         <div class="row height-100">
-            <div class="col s12 height-100">
+            <div class="col s12 height-100 no-padding">
                 <router-view />
             </div>
         </div>

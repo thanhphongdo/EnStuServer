@@ -73,6 +73,18 @@
     border-left-style: dashed;
 }
 
+.border-color-orange {
+    border-color: #ff9800 ;
+}
+
+.border-color-orange-darken-2 {
+    border-color: #f57c00;
+}
+
+.border-color-yellow-accent-4 {
+    border-color: #ffd600;
+}
+
 .border-radius-3 {
     border-radius: 3px;
 }
@@ -708,6 +720,13 @@
     font-weight: 400;
 }
 
+.overflow-auto {
+    overflow: auto;
+}
+
+.text-italic {
+    font-style: italic;
+}
 
 @media (max-width: 768px) {
     .display-flex-sm{

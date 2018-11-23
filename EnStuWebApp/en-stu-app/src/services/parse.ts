@@ -1,6 +1,7 @@
 var Parse = require('parse/dist/parse.min.js');
 import { JsonObject, JsonProperty, JsonCustomConvert, JsonConvert, JsonConverter, OperationMode, ValueCheckingMode } from "json2typescript";
 import Vue from 'vue';
+import { User } from '../models/index';
 
 function init() {
     Parse.initialize(process.env.VUE_APP_PARSE_ID);
@@ -45,8 +46,38 @@ function deserializeArray<T>(className: any, jsons: Array<any>): Array<T> {
     return data;
 }
 
-function toJSON(data: any){
+function toJSON(data: any) {
     return JSON.parse(JSON.stringify(data));
+}
+
+function login(email: string, password: string) {
+    return new Promise((resolve, reject) => {
+        Vue.prototype.Parse.User.logIn(email, password).then((data: any) => {
+            resolve(data);
+        }).catch((err: any) => {
+            reject()
+        });
+    });
+}
+
+function register(email: string, password: string) {
+    var user = new Vue.prototype.Parse.User();
+    user.set("username", email);
+    user.set("password", password);
+    user.set("email", email);
+    return new Promise((resolve, reject) => {
+        user.signUp().then((data: any) => {
+            resolve(data);
+        }).catch((err: any) => {
+            reject(err)
+        });
+    });
+}
+
+function currentUser(): User | null {
+    var currentUser = Vue.prototype.Parse.User.current();
+    if(!currentUser) return null;
+    return deserialize<User>(User, toJSON(currentUser));
 }
 
 export {
@@ -54,5 +85,8 @@ export {
     cloud,
     deserialize,
     deserializeArray,
-    toJSON
+    toJSON,
+    login,
+    register,
+    currentUser
 }

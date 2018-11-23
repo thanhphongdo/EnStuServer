@@ -50,9 +50,11 @@ export default class AuthenticationFlow extends Vue {
 
     onRegisterAction(event: AuthenAction) {
         console.log(event);
-        if (event.success == false) {
-            this.currentStep = event.step;
-        }
+        this.$emit('authenAction', {
+            success: true,
+            step: FirstFlowStep.SELECT_LEVEL,
+            data: {}
+        });
     }
 
     methods() {

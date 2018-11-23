@@ -24,10 +24,9 @@ export default class SelectLevel extends Vue {
     }
 
     selectLevel(){
-        this.setLevelBySource('source_1');
-        // this.$emit('selectLevelAction', {
-        //     level: ''
-        // })
+        this.$emit('selectLevelAction', {
+
+        })
     }
 
 
