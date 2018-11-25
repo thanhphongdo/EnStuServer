@@ -157,7 +157,7 @@
 				<p>Before using it, you can access a test page to verify if the basic setup is working fine <a href="http://localhost:1337/test">http://localhost:1337/test</a>.
 				Then you can use the REST API, the JavaScript SDK, and any of our open-source SDKs:</p>
 				<p>Example request to a server running locally:</p>
-				<pre><code class="lang-curl">curl -X POST \
+				<pre><code class="language-curl">curl -X POST \
   -H &quot;X-Parse-Application-Id: myAppId&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;score&quot;:1337,&quot;playerName&quot;:&quot;Sean Plott&quot;,&quot;cheatMode&quot;:false}&#39; \
@@ -167,10 +167,9 @@ curl -X POST \
   -H &quot;X-Parse-Application-Id: myAppId&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{}&#39; \
-  http://localhost:1337/parse/functions/hello
-</code></pre>
+  http://localhost:1337/parse/functions/hello</code></pre>
 				<p>Example using it via JavaScript:</p>
-				<pre><code class="lang-javascript">Parse.initialize(<span class="hljs-string">'myAppId'</span>,<span class="hljs-string">'unused'</span>);
+				<pre><code class="language-javascript">Parse.initialize(<span class="hljs-string">'myAppId'</span>,<span class="hljs-string">'unused'</span>);
 Parse.serverURL = <span class="hljs-string">'https://whatever.herokuapp.com'</span>;
 
 <span class="hljs-keyword">var</span> obj = <span class="hljs-keyword">new</span> Parse.Object(<span class="hljs-string">'GameScore'</span>);
@@ -181,10 +180,9 @@ obj.save().then(<span class="hljs-function"><span class="hljs-keyword">function<
   query.get(obj.id).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">objAgain</span>) </span>{
     <span class="hljs-built_in">console</span>.log(objAgain.toJSON());
   }, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{<span class="hljs-built_in">console</span>.log(err); });
-}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{ <span class="hljs-built_in">console</span>.log(err); });
-</code></pre>
+}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{ <span class="hljs-built_in">console</span>.log(err); });</code></pre>
 				<p>Example using it on Android:</p>
-				<pre><code class="lang-java"><span class="hljs-comment">//in your application class</span>
+				<pre><code class="language-java"><span class="hljs-comment">//in your application class</span>
 
 Parse.initialize(<span class="hljs-keyword">new</span> Parse.Configuration.Builder(getApplicationContext())
   .applicationId(<span class="hljs-string">"myAppId"</span>)
@@ -193,16 +191,14 @@ Parse.initialize(<span class="hljs-keyword">new</span> Parse.Configuration.Build
 
 ParseObject testObject = <span class="hljs-keyword">new</span> ParseObject(<span class="hljs-string">"TestObject"</span>);
 testObject.put(<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>);
-testObject.saveInBackground();
-</code></pre>
+testObject.saveInBackground();</code></pre>
 				<p>Example using it on iOS (Swift):</p>
-				<pre><code class="lang-swift"><span class="hljs-comment">//in your AppDelegate</span>
+				<pre><code class="language-swift"><span class="hljs-comment">//in your AppDelegate</span>
 
 <span class="hljs-type">Parse</span>.initializeWithConfiguration(<span class="hljs-type">ParseClientConfiguration</span>(block: { (configuration: <span class="hljs-type">ParseMutableClientConfiguration</span>) -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
   configuration.server = <span class="hljs-string">"https://&lt;# Your Server URL #&gt;/parse/"</span> <span class="hljs-comment">// '/' important after 'parse'</span>
   configuration.applicationId = <span class="hljs-string">"&lt;# Your APP_ID #&gt;"</span>
-}))
-</code></pre>
+}))</code></pre>
 				<p>You can change the server URL in all of the open-source SDKs, but we&#39;re releasing new builds which provide initialization time configuration of this property.</p>
 				<p>As of April 5, 2017, Parse, LLC has transferred this code to the parse-community organization, and will no longer be contributing to or distributing this code.</p>
 				<h3 id="make-document-with-typedoc">Make document with typedoc</h3>
@@ -216,10 +212,22 @@ testObject.saveInBackground();
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_cloud_learning_source_.html">"cloud/learning_<wbr>source"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_cloud_level_.html">"cloud/level"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_cloud_main_.html">"cloud/main"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_cloud_post_.html">"cloud/post"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_cloud_topic_.html">"cloud/topic"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_cloud_word_.html">"cloud/word"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_config_config_.html">"config/config"</a>
@@ -246,10 +254,28 @@ testObject.saveInBackground();
 						<a href="modules/_model_database_model_index_.html">"model/database_<wbr>model/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_database_model_learning_source_.html">"model/database_<wbr>model/learning_<wbr>source"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_database_model_learning_word_.html">"model/database_<wbr>model/learning_<wbr>word"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_database_model_level_.html">"model/database_<wbr>model/level"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_model_database_model_post_.html">"model/database_<wbr>model/post"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_database_model_source_.html">"model/database_<wbr>model/source"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_database_model_topic_.html">"model/database_<wbr>model/topic"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_model_database_model_user_.html">"model/database_<wbr>model/user"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_database_model_word_.html">"model/database_<wbr>model/word"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_model_index_.html">"model/index"</a>
@@ -258,28 +284,52 @@ testObject.saveInBackground();
 						<a href="modules/_model_request_model_index_.html">"model/request_<wbr>model/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_model_request_model_request_list_base_.html">"model/request_<wbr>model/request-<wbr>list-<wbr>base"</a>
+						<a href="modules/_model_request_model_request_learning_source_.html">"model/request_<wbr>model/request_<wbr>learning_<wbr>source"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_model_request_model_request_list_post_.html">"model/request_<wbr>model/request-<wbr>list-<wbr>post"</a>
+						<a href="modules/_model_request_model_request_level_.html">"model/request_<wbr>model/request_<wbr>level"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_request_model_request_list_base_.html">"model/request_<wbr>model/request_<wbr>list_<wbr>base"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_request_model_request_list_level_.html">"model/request_<wbr>model/request_<wbr>list_<wbr>level"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_request_model_request_list_post_.html">"model/request_<wbr>model/request_<wbr>list_<wbr>post"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_request_model_request_list_topic_.html">"model/request_<wbr>model/request_<wbr>list_<wbr>topic"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_request_model_request_topic_.html">"model/request_<wbr>model/request_<wbr>topic"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_model_request_model_request_word_.html">"model/request_<wbr>model/request_<wbr>word"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_model_response_model_index_.html">"model/response_<wbr>model/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_model_response_model_response_list_base_.html">"model/response_<wbr>model/response-<wbr>list-<wbr>base"</a>
+						<a href="modules/_model_response_model_response_list_base_.html">"model/response_<wbr>model/response_<wbr>list_<wbr>base"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_model_response_model_response_list_post_.html">"model/response_<wbr>model/response-<wbr>list-<wbr>post"</a>
+						<a href="modules/_model_response_model_response_list_post_.html">"model/response_<wbr>model/response_<wbr>list_<wbr>post"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_parse_cloud_function_base_.html">"parse/cloud-<wbr>function-<wbr>base"</a>
+						<a href="modules/_parse_cloud_function_base_.html">"parse/cloud_<wbr>function_<wbr>base"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_parse_index_.html">"parse/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_parse_parse_query_.html">"parse/parse-<wbr>query"</a>
+						<a href="modules/_parse_parse_object_base_.html">"parse/parse_<wbr>object_<wbr>base"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_parse_parse_query_base_.html">"parse/parse_<wbr>query_<wbr>base"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_text_to_speech_index_.html">"text_<wbr>to_<wbr>speech/index"</a>
 					</li>
 				</ul>
 			</nav>

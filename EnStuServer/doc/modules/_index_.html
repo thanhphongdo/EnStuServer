@@ -78,6 +78,7 @@
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_index_.html#api" class="tsd-kind-icon">api</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_index_.html#app" class="tsd-kind-icon">app</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_index_.html#dashboard" class="tsd-kind-icon">dashboard</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_index_.html#fs" class="tsd-kind-icon">fs</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_index_.html#httpserver" class="tsd-kind-icon">http<wbr>Server</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_index_.html#mountpath" class="tsd-kind-icon">mount<wbr>Path</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_index_.html#path" class="tsd-kind-icon">path</a></li>
@@ -94,7 +95,7 @@
 					<div class="tsd-signature tsd-kind-icon">Parse<wbr>Dashboard<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;parse-dashboard&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in index.ts:4</li>
+							<li>Defined in <a href="https://github.com/thanhphongdo/EnStuServer/blob/574b11e/EnStuServer/src/index.ts#L6">index.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -104,7 +105,7 @@
 					<div class="tsd-signature tsd-kind-icon">Parse<wbr>Server<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;parse-server&#x27;).ParseServer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in index.ts:3</li>
+							<li>Defined in <a href="https://github.com/thanhphongdo/EnStuServer/blob/574b11e/EnStuServer/src/index.ts#L5">index.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -114,7 +115,7 @@
 					<div class="tsd-signature tsd-kind-icon">api<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;new ParseServer({databaseURI: appConfig.parseServer.databaseURI,cloud: __dirname + appConfig.parseServer.cloud,appId: appConfig.parseServer.appId,masterKey: appConfig.parseServer.masterKey,serverURL: appConfig.parseServer.serverURL,liveQuery: appConfig.parseServer.liveQuery})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in index.ts:10</li>
+							<li>Defined in <a href="https://github.com/thanhphongdo/EnStuServer/blob/574b11e/EnStuServer/src/index.ts#L12">index.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -124,17 +125,27 @@
 					<div class="tsd-signature tsd-kind-icon">app<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Application</span><span class="tsd-signature-symbol"> =&nbsp;express()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in index.ts:37</li>
+							<li>Defined in <a href="https://github.com/thanhphongdo/EnStuServer/blob/574b11e/EnStuServer/src/index.ts#L39">index.ts:39</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 					<a name="dashboard" class="tsd-anchor"></a>
 					<h3>dashboard</h3>
-					<div class="tsd-signature tsd-kind-icon">dashboard<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;new ParseDashboard({apps: [{serverURL: appConfig.parseServer.serverURL,appId: appConfig.parseServer.appId,masterKey: appConfig.parseServer.masterKey,appName: appConfig.parseServer.appName}],users: [{user: &#x27;root&#x27;,pass: &#x27;r00t&#x27;}]}, { allowInsecureHTTP: true })</span></div>
+					<div class="tsd-signature tsd-kind-icon">dashboard<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;new ParseDashboard({apps: [{serverURL: appConfig.parseServer.serverURL,appId: appConfig.parseServer.appId,masterKey: appConfig.parseServer.masterKey,appName: appConfig.parseServer.appName}],// users: [{//     user: &#x27;root&#x27;,//     pass: &#x27;r00t&#x27;// }]}, { allowInsecureHTTP: true })</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in index.ts:24</li>
+							<li>Defined in <a href="https://github.com/thanhphongdo/EnStuServer/blob/574b11e/EnStuServer/src/index.ts#L26">index.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="fs" class="tsd-anchor"></a>
+					<h3>fs</h3>
+					<div class="tsd-signature tsd-kind-icon">fs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;fs&#x27;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/thanhphongdo/EnStuServer/blob/574b11e/EnStuServer/src/index.ts#L4">index.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -144,7 +155,7 @@
 					<div class="tsd-signature tsd-kind-icon">http<wbr>Server<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;http&#x27;).createServer(app)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in index.ts:59</li>
+							<li>Defined in <a href="https://github.com/thanhphongdo/EnStuServer/blob/574b11e/EnStuServer/src/index.ts#L116">index.ts:116</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -154,7 +165,7 @@
 					<div class="tsd-signature tsd-kind-icon">mount<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;/parse&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in index.ts:43</li>
+							<li>Defined in <a href="https://github.com/thanhphongdo/EnStuServer/blob/574b11e/EnStuServer/src/index.ts#L45">index.ts:45</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -164,7 +175,7 @@
 					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;path&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in index.ts:5</li>
+							<li>Defined in <a href="https://github.com/thanhphongdo/EnStuServer/blob/574b11e/EnStuServer/src/index.ts#L7">index.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -176,71 +187,8 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_cloud_main_.html">"cloud/main"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_cloud_post_.html">"cloud/post"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_config_config_.html">"config/config"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_config_config_debug_.html">"config/config.debug"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_config_config_dev_.html">"config/config.dev"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_config_config_prod_.html">"config/config.prod"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_config_config_interface_.html">"config/config_<wbr>interface"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_config_index_.html">"config/index"</a>
-					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="_index_.html">"index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_model_database_model_index_.html">"model/database_<wbr>model/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_model_database_model_post_.html">"model/database_<wbr>model/post"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_model_database_model_user_.html">"model/database_<wbr>model/user"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_model_index_.html">"model/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_model_request_model_index_.html">"model/request_<wbr>model/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_model_request_model_request_list_base_.html">"model/request_<wbr>model/request-<wbr>list-<wbr>base"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_model_request_model_request_list_post_.html">"model/request_<wbr>model/request-<wbr>list-<wbr>post"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_model_response_model_index_.html">"model/response_<wbr>model/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_model_response_model_response_list_base_.html">"model/response_<wbr>model/response-<wbr>list-<wbr>base"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_model_response_model_response_list_post_.html">"model/response_<wbr>model/response-<wbr>list-<wbr>post"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_parse_cloud_function_base_.html">"parse/cloud-<wbr>function-<wbr>base"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_parse_index_.html">"parse/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_parse_parse_query_.html">"parse/parse-<wbr>query"</a>
 					</li>
 				</ul>
 			</nav>
@@ -260,6 +208,9 @@
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_index_.html#dashboard" class="tsd-kind-icon">dashboard</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_index_.html#fs" class="tsd-kind-icon">fs</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_index_.html#httpserver" class="tsd-kind-icon">http<wbr>Server</a>
