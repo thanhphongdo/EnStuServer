@@ -1,15 +1,19 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { mapGetters, mapMutations, mapActions } from 'vuex';
 import template from './first_flow.vue';
-import { AuthenAction } from '../../interfaces/index';
+import { AuthenAction, LearningSourceEmit, GetTopicBySource } from '../../interfaces/index';
 import { FirstFlowStep } from '../../enums';
 import AuthenticationFlow from '@/components/authentication_flow/authentication_flow.ts';
 import SelectLevel from '@/components/select_level/select_level.ts';
 import SelectTopic from '@/components/select_topic/select_topic.ts';
 import SelectWord from '@/components/select_word/select_word.ts';
 import { currentUser } from '../../services/parse';
+import { LearningSourceService } from '../../services/index';
+import { Topic } from '../../models/index';
 
 @Component({
     name: 'FirstFlow',
+    computed: mapGetters(['getTopicBySource']),
     components: {
         AuthenticationFlow,
         SelectLevel,
@@ -21,6 +25,10 @@ import { currentUser } from '../../services/parse';
 export default class FirstFlow extends Vue {
     @Prop() private msg!: string;
     private step: string = FirstFlowStep.AUTHEN;
+    private learningSource: LearningSourceEmit = {
+        sourceId: 'EoT3y7nabE'
+    };
+    getTopicBySource!: GetTopicBySource;
 
     mounted() {
         if (currentUser()) {
@@ -36,12 +44,25 @@ export default class FirstFlow extends Vue {
         }
     }
 
-    onSelectLevelAction(event: any) {
+    onSelectLevelAction(event: LearningSourceEmit) {
         console.log('onSelectLevelAction')
         this.step = FirstFlowStep.SELECT_TOPIC;
+        this.learningSource.levelId = event.levelId;
     }
 
-    onSelectTopicAction(event: any) {
-        this.step = FirstFlowStep.SELECT_WORD;
+    onSelectTopicAction(event: LearningSourceEmit) {
+        var self = this;
+        this.learningSource.topicId = event.topicId;
+        var topicIds = <Array<string>>this.getTopicBySource(this.learningSource.sourceId || '').filter((value => {
+            return value.checked;
+        })).map(value => {
+            return value.id;
+        });
+        LearningSourceService.learnSource(this.learningSource.sourceId, this.learningSource.levelId, topicIds).then(data => {
+            console.log((<Topic>data[0].topic).name);
+            self.step = FirstFlowStep.SELECT_WORD;
+        }).catch(err => {
+            console.log(err);
+        });
     }
 }

@@ -4,32 +4,10 @@ import { PostCloud } from './post';
 import { TopicCloud } from './topic';
 import { WordCloud } from './word';
 import { LevelCloud } from './level';
+import { LearningSourceCloud } from './learning_source';
 
 const postCloud = new PostCloud();
 const topicCloud = new TopicCloud();
 const wordCloud = new WordCloud();
 const levelCloud = new LevelCloud();
-
-Parse.Cloud.define('hello', function (req, res) {
-    res.success({ test: true });
-});
-
-// Parse.Cloud.define("test", function (request, response) {
-//     const query = new Parse.Query("Topic");
-//     query.find()
-//         .then((results) => {
-//             return results;
-//         })
-//         .catch(() => {
-//             return "movie lookup failed";
-//         });
-// });
-
-
-Parse.Cloud.define("test", (request) => {
-    const query = new Parse.Query('Topic');
-    return query.find({useMasterKey:true})
-    .then((results) => {
-        return results;
-    });
-});
+const learningSourceCloud = new LearningSourceCloud();

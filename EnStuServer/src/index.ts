@@ -52,6 +52,11 @@ app.get('/', function (req, res) {
     res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
 
+app.use(function (req, res, next) {
+    console.log('Time:', Date.now())
+    next()
+})
+
 // var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 
 // var textToSpeech = new TextToSpeechV1({
@@ -86,20 +91,20 @@ app.get('/', function (req, res) {
 //     res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 // });
 
-import {RequestWord} from './model/request_model/request_word';
-app.get('/test', function (req, res) {
-    // var RequestWord = require('./model/request_model/request_word').RequestWord;
-    var params = new RequestWord();
-    params.text = 'Hello';
-    params.topicId = 'Uah8sQr1EM',
-    params.levelId = 'wtKPHxHO4w';
-    Parse.Cloud.run("addWord", params.toJSON()).then(data=>{
-        console.log(data);
-    }).catch(err=>{
-        console.log(err);
-    })
-    res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
-});
+// import { RequestWord } from './model/request_model/request_word';
+// app.get('/test', function (req, res) {
+//     // var RequestWord = require('./model/request_model/request_word').RequestWord;
+//     var params = new RequestWord();
+//     params.text = 'Hello';
+//     params.topicId = 'Uah8sQr1EM',
+//         params.levelId = 'wtKPHxHO4w';
+//     Parse.Cloud.run("addWord", params.toJSON()).then(data => {
+//         console.log(data);
+//     }).catch(err => {
+//         console.log(err);
+//     })
+//     res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
+// });
 
 
 // There will be a test page available on the /test path of your server url

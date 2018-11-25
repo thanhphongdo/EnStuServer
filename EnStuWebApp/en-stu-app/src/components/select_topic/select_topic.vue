@@ -5,9 +5,9 @@
             Chọn chủ đề bạn muốn học
         </div>
         <div class="col s12 overflow-auto flex-1">
-            <div class="col s12" v-for="(item, index) in getTopicBySource('source_1')" :key="index">
+            <div class="col s12" v-for="(item, index) in getTopicBySource('EoT3y7nabE')" :key="index">
                 <button class="waves-effect waves-orange-lighten-1 btn-flat light-blue-text text-darken-4 width-100 btn-sub display-flex justify-content-center align-item-center"
-                    @click="selectTopic({sourceId: 'source_1', levelId: item.id})">
+                    @click="selectTopic({sourceId: 'EoT3y7nabE', levelId: item.id})">
                     <i v-if="item.checked" class="material-icons dp48">check</i>
                     <span>{{item.name}}</span>
                 </button>

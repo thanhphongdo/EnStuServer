@@ -2,7 +2,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import template from './select_level.vue';
 import { mapGetters, mapMutations, mapActions } from 'vuex';
 import {Level} from '../../models/index';
-import {GetLevelBySource} from '../../interfaces/index';
+import {GetLevelBySource, SetLevelBySource} from '../../interfaces/index';
 
 @Component({
     name: 'SelectLevel',
@@ -17,15 +17,15 @@ export default class SelectLevel extends Vue {
 
     getLevelBySource!: GetLevelBySource;
 
-    setLevelBySource: any;
+    setLevelBySource!: SetLevelBySource;
 
     mounted(){
-        this.setLevelBySource('source_1');
+        this.setLevelBySource('EoT3y7nabE');
     }
 
-    selectLevel(){
+    selectLevel(levelId: string){
         this.$emit('selectLevelAction', {
-
+            levelId: levelId
         })
     }
 

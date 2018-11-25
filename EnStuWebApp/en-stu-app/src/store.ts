@@ -23,10 +23,10 @@ export default new Vuex.Store<{
             }
         ],
         levels: {
-            source_1: []
+            EoT3y7nabE: []
         },
         topics: {
-            source_1: []
+            EoT3y7nabE: []
         }
     },
     getters: {

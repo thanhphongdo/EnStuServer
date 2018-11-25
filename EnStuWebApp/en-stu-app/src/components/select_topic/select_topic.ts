@@ -1,8 +1,8 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import template from './select_topic.vue';
 import { mapGetters, mapMutations, mapActions } from 'vuex';
-import {Topic} from '../../models/index';
-import {GetTopicBySource} from '../../interfaces/index';
+import { Topic } from '../../models/index';
+import { GetTopicBySource, SetTopicBySource } from '../../interfaces/index';
 
 @Component({
     name: 'SelectTopic',
@@ -17,21 +17,21 @@ export default class SelectTopic extends Vue {
 
     getTopicBySource!: GetTopicBySource;
 
-    setTopicBySource: any;
+    setTopicBySource!: SetTopicBySource;
     selectTopic: any;
 
-    mounted(){
-        this.setTopicBySource('source_1');
+    mounted() {
+        this.setTopicBySource('EoT3y7nabE');
     }
 
-    nextTopic(){
+    nextTopic() {
         this.$emit('selectTopicAction', {
-            
+
         })
     }
 
     // selectTopic(){
-    //     this.setTopicBySource('source_1');
+    //     this.setTopicBySource('EoT3y7nabE');
     //     // this.$emit('selectTopicAction', {
     //     //     Topic: ''
     //     // })
