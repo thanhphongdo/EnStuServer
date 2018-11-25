@@ -1,8 +1,9 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/views/home/home.ts'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from '@/views/home/home.ts';
+import SelectWord from '@/views/select_word/select_word.ts';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
@@ -14,6 +15,11 @@ export default new Router({
       component: Home
     },
     {
+      path: '/select-word',
+      name: 'select-word',
+      component: SelectWord
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
@@ -22,4 +28,4 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/about/about.vue')
     }
   ]
-})
+});

@@ -1,11 +1,11 @@
 import { Component, Vue } from 'vue-property-decorator';
-import FirstFlow from '@/components/first_flow/first_flow.ts';
-import template from './home.vue';
+import SelectWord from '@/components/select_word/select_word.ts';
+import template from './select_word.vue';
 
 @Component({
   mixins: [template],
   components: {
-    FirstFlow,
+    SelectWord
   },
   data(){
     return{

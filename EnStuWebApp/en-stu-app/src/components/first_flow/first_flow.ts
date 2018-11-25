@@ -59,8 +59,9 @@ export default class FirstFlow extends Vue {
             return value.id;
         });
         LearningSourceService.learnSource(this.learningSource.sourceId, this.learningSource.levelId, topicIds).then(data => {
-            console.log((<Topic>data[0].topic).name);
-            self.step = FirstFlowStep.SELECT_WORD;
+            // console.log((<Topic>data[0].topic).name);
+            // self.step = FirstFlowStep.SELECT_WORD;
+            this.$router.push('/select-word');
         }).catch(err => {
             console.log(err);
         });
