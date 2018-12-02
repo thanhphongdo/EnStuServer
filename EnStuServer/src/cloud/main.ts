@@ -11,3 +11,6 @@ const topicCloud = new TopicCloud();
 const wordCloud = new WordCloud();
 const levelCloud = new LevelCloud();
 const learningSourceCloud = new LearningSourceCloud();
+
+import { addWord } from '../data/dump';
+addWord();

@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --mode development",
     "build-dev": "vue-cli-service build --mode development",
-    "build-prod": "vue-cli-service build --mode production"
+    "build-prod": "vue-cli-service build --mode production --dest dist --target app --dashboard"
   },
   "dependencies": {
     "@types/jquery": "^3.3.22",

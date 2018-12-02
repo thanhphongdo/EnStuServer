@@ -15,6 +15,23 @@ export class Word extends ParseObjectBase {
         this.set('text', value);
     }
 
+    get textVi(): string {
+        return this.get('textVi');
+    }
+
+    set textVi(value: string) {
+        this.set('textVi', value);
+    }
+
+
+    get source(): any {
+        return this.get('source');
+    }
+
+    set source(value: any) {
+        this.set('source', value);
+    }
+
     get topic(): any {
         return this.get('topic');
     }

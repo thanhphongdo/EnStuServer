@@ -4,6 +4,14 @@ export class RequestWord extends Word {
     constructor(){
         super();
     }
+    get sourceId(): string {
+        return this.get('sourceId');
+    }
+
+    set sourceId(value: string) {
+        this.set('sourceId', value);
+    }
+
     get topicId(): string {
         return this.get('topicId');
     }
@@ -11,6 +19,7 @@ export class RequestWord extends Word {
     set topicId(value: string) {
         this.set('topicId', value);
     }
+
     get levelId(): string {
         return this.get('levelId');
     }

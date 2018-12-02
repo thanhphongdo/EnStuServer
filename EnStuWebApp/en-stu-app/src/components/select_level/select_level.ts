@@ -9,7 +9,7 @@ import {GetLevelBySource, SetLevelBySource} from '../../interfaces/index';
     mixins: [template],
     computed: mapGetters(['getLevelBySource']),
     methods: {
-        ...mapActions(['setLevelBySource'])
+        ...mapActions(['setLevelBySource', 'test'])
     }
 })
 export default class SelectLevel extends Vue {
@@ -19,8 +19,11 @@ export default class SelectLevel extends Vue {
 
     setLevelBySource!: SetLevelBySource;
 
+    test: any;
+
     mounted(){
         this.setLevelBySource('EoT3y7nabE');
+        this.test();
     }
 
     selectLevel(levelId: string){
