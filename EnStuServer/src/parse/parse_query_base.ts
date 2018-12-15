@@ -1,4 +1,3 @@
-import { Promise } from 'parse/node';
 export class ParseQueryBase extends Parse.Query {
     objClass: any;
     constructor(objClass: any) {
@@ -6,29 +5,18 @@ export class ParseQueryBase extends Parse.Query {
         this.objClass = objClass
     }
 
-    find<T>(options?: Parse.Query.FindOptions): Parse.Promise<Array<T>> {
-        var self = this;
-        return Promise.when(super.find(options).then(data => {
-            var dataConvert = self.objClass.newArrayObject(data, self.objClass);
-            return dataConvert;
-        }).catch(err => {
-            throw err;
-        }));
+    async findAsync<T>(options?: Parse.Query.FindOptions): Promise<Array<T>> {
+        var data = await super.find(options);
+        return this.objClass.newArrayObject(data, this.objClass);
     }
 
-    first<T>(options?: Parse.Query.FindOptions): Parse.Promise<T> {
-        var self = this;
-        return Promise.when(super.first(options).then(function (data) {
-            var dataConvert = self.objClass.newObject(data, self.objClass);
-            return dataConvert;
-        }));
+    async firstAsync<T>(options?: Parse.Query.FindOptions): Promise<T> {
+        var data = await super.first(options);
+        return this.objClass.newObject(data, this.objClass);
     }
 
-    get<T>(objectId: string, options?: Parse.Query.FindOptions): Parse.Promise<T> {
-        var self = this;
-        return Promise.when(super.get(objectId, options).then(function (data) {
-            var dataConvert = self.objClass.newObject(data, self.objClass);
-            return dataConvert;
-        }));
+    async getAsync<T>(objectId: string, options?: Parse.Query.FindOptions): Promise<T> {
+        var data = await super.get(objectId, options);
+        return this.objClass.newObject(data, this.objClass);
     }
 }

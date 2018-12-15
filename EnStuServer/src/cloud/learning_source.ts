@@ -1,19 +1,15 @@
 import { CloudFunctionBase } from '../parse/index';
 import { RequestLearningSource, RequestListTopic, ResponseListBase, LearningSource, Source, Topic, Level, User } from '../model/index';
 import { ParseQueryBase } from '../parse';
-import { Promise } from 'parse/node';
-import { File } from 'parse/node';
-import { getVoice } from '../text_to_speech/index';
-import { Exception } from 'handlebars';
 
 export class LearningSourceCloud extends CloudFunctionBase {
     constructor() {
         super();
         this.defineCloud(this.learningSource);
-        // this.defineCloud(this.listTopic);
     }
+    
 
-    learningSource(params: RequestLearningSource, request: Parse.Cloud.FunctionRequest): Parse.Promise<ResponseListBase<LearningSource>> {
+    async learningSource(params: RequestLearningSource, request: Parse.Cloud.FunctionRequest): Promise<ResponseListBase<LearningSource>> {
         if (!request.user) {
             throw LearningSourceCloud.unauthorized;
         }
@@ -39,19 +35,11 @@ export class LearningSourceCloud extends CloudFunctionBase {
         query.equalTo('source', source);
         query.equalTo('user', request.user);
         query.limit(1000);
-        return Promise.when(query.find<LearningSource>({ useMasterKey: true }).then((data) => {
-            return Parse.Object.destroyAll(data).then(data => {
-                return Parse.Object.saveAll(learningSources, { useMasterKey: true }).then((LearningSources) => {
-                    let response: ResponseListBase<LearningSource> = new ResponseListBase<LearningSource>(1, LearningSources.length, LearningSources);
-                    return response;
-                }).catch(err=>{
-                    throw err;
-                });
-            }).catch(err => {
-                throw err;
-            });
-        }).catch(err => {
-            throw err;
-        }));
+        var data = await query.findAsync<LearningSource>({ useMasterKey: true });
+        if (data && data.length) {
+            await Parse.Object.destroyAll(data);
+        }
+        var response = await Parse.Object.saveAll(learningSources, { useMasterKey: true });
+        return Promise.resolve(new ResponseListBase<LearningSource>(1, response.length, response));
     }
 }

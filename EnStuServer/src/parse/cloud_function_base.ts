@@ -1,6 +1,10 @@
 // import * as Parse from 'parse-server/node';
 export interface LogsDataInterface { }
 
+export interface CloundFunction {
+    (params: any, request: Parse.Cloud.FunctionRequest): Promise<any>;
+}
+
 export interface CloudFunctionInterface<T> {
     call(params: any, request: Parse.Cloud.FunctionRequest): Parse.Promise<T>;
 }
@@ -19,14 +23,11 @@ export class CloudFunctionBase {
         return new Parse.Error(data.code || Parse.ErrorCode.INTERNAL_SERVER_ERROR, data.message || 'internal server error');
     }
 
-    defineCloud(cloudFunction: { (params: any, request: Parse.Cloud.FunctionRequest): Parse.Promise<any>, name?: any }) {
-        Parse.Cloud.define(cloudFunction.name, function (req: Parse.Cloud.FunctionRequest, res: any) {
+    async defineCloud(cloudFunction: CloundFunction) {
+        Parse.Cloud.define(cloudFunction.name, async function (req: Parse.Cloud.FunctionRequest, res: any) {
             try {
-                return cloudFunction(req.params, req).then(data => {
-                    return CloudFunctionBase.success(data);
-                }).catch(err => {
-                    throw CloudFunctionBase.error(err);
-                })
+                var result = await cloudFunction(req.params, req);
+                return result;
             } catch (err) {
                 throw CloudFunctionBase.error(err);
             }

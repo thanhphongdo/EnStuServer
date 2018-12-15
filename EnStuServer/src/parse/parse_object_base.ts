@@ -15,6 +15,16 @@ export class ParseObjectBase extends Parse.Object {
         return objArr;
     }
 
+    async saveAsync<T>(attrs?: { [key: string]: any } | null, options?: Object.SaveOptions): Promise<T> {
+        var data: any = await super.save(attrs, options);
+        return data;
+    } 
+
+    async fetchAsync(options?: Object.FetchOptions){
+        var data: any = await super.fetch(options);
+        return data;
+    }
+
     constructor(className?: string, data?: {[key: string]: any}) {
         super(className, data);
         

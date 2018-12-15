@@ -1,7 +1,7 @@
 import { CloudFunctionBase } from '../parse/index';
 import { RequestTopic, RequestListTopic, ResponseListBase, Topic } from '../model/index';
 import { ParseQueryBase } from '../parse';
-import { Promise } from 'parse/node';
+// import { Promise } from 'parse/node';
 
 export class TopicCloud extends CloudFunctionBase {
     constructor() {
@@ -10,28 +10,19 @@ export class TopicCloud extends CloudFunctionBase {
         this.defineCloud(this.listTopic);
     }
 
-    addTopic(params: RequestTopic, request: Parse.Cloud.FunctionRequest): Parse.Promise<Topic> {
+    async addTopic(params: RequestTopic, request: Parse.Cloud.FunctionRequest): Promise<Topic> {
         var topic = new Topic();
         topic.name = params.name;
-        return Promise.when(topic.save(null, { useMasterKey: true }).then((topic: any) => {
-            return topic;
-        }).catch(err => {
-            throw err;
-        }));
+        return await topic.saveAsync<Topic>(null, { useMasterKey: true });
     }
 
-    listTopic(params: RequestListTopic, request: Parse.Cloud.FunctionRequest): Parse.Promise<ResponseListBase<Topic>> {
+    async listTopic(params: RequestListTopic, request: Parse.Cloud.FunctionRequest): Promise<ResponseListBase<Topic>> {
         let postQuery = new ParseQueryBase(Topic);
         params.perPage = params.perPage || 10;
         params.page = params.page || 1;
         postQuery.limit(params.perPage);
         postQuery.skip(params.perPage * (params.page - 1));
         postQuery.include('source');
-        return Promise.when(postQuery.find<Topic>({ useMasterKey: true }).then((topics) => {
-            let response: ResponseListBase<Topic> = new ResponseListBase<Topic>(1, 10, topics);
-            return response;
-        }).catch(err => {
-            throw err;
-        }));
+        return new ResponseListBase<Topic>(1, 10, await postQuery.findAsync<Topic>({ useMasterKey: true }));
     }
 }

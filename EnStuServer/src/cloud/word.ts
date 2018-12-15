@@ -1,8 +1,6 @@
 import { CloudFunctionBase } from '../parse/index';
 import { RequestWord, RequestListTopic, ResponseListBase, Word, Topic, Level } from '../model/index';
 import { ParseQueryBase } from '../parse';
-import { Promise } from 'parse/node';
-import { File } from 'parse/node';
 import { getVoice } from '../text_to_speech/index';
 
 export class WordCloud extends CloudFunctionBase {
@@ -12,7 +10,7 @@ export class WordCloud extends CloudFunctionBase {
         this.defineCloud(this.selectWord);
     }
 
-    addWord(params: RequestWord, request: Parse.Cloud.FunctionRequest): Parse.Promise<Word> {
+    async addWord(params: RequestWord, request: Parse.Cloud.FunctionRequest): Promise<Word> {
         var word = new Word();
         var topic = new Topic();
         topic.id = params.topicId + '';
@@ -22,37 +20,19 @@ export class WordCloud extends CloudFunctionBase {
         word.textVi = params.textVi;
         word.topic = topic;
         word.level = level;
-        return Promise.when(word.save(null, { useMasterKey: true }).then((word) => {
-            return getVoice(params.text).then((audio: any) => {
-                // var voiceEn = new File('voiceEn', { base64: audio }, 'audio/wav');
-                var voiceEn = new Parse.File('voiceEn', Array.from(audio), 'audio/wav');
-                return voiceEn.save().then(file=>{
-                    word.voiceEn = file;
-                    return word.save(null, { useMasterKey: true }).then(word => {
-                        return word;
-                    }).catch(err => {
-                        throw err;
-                    });
-                }).catch(err=>{
-                    throw err;
-                });
-            }).catch(err => {
-                throw err;
-            });
-        }).catch(err => {
+        try {
+            var voice: any = await getVoice(params.text);
+            var voiceEn = new Parse.File('voiceEn', Array.from(voice), 'audio/wav');
+            var file = await voiceEn.save();
+            word.voiceEn = file;
+            return await word.saveAsync<Word>(null, { useMasterKey: true });
+        } catch (err) {
             throw err;
-        }));
-        // return getVoice(params.text).then(audio=>{
-
-        // })
-
+        }
     }
 
-    selectWord(params: RequestWord, request: Parse.Cloud.FunctionRequest): Parse.Promise<ResponseListBase<Word>>{
+    async selectWord(params: RequestWord, request: Parse.Cloud.FunctionRequest): Promise<ResponseListBase<Word>>{
         let query = new ParseQueryBase(Word);
-        return Promise.when(query.find<Word>({useMasterKey: true}).then(words=>{
-            let response: ResponseListBase<Word> = new ResponseListBase<Word>(1, 1000, words);
-            return response;
-        }))
+        return new ResponseListBase<Word>(1, 10, await query.findAsync<Word>({ useMasterKey: true }));
     }
 }
